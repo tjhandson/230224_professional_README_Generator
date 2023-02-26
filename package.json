@@ -1,0 +1,23 @@
+{
+  "name": "230224_professional_readme_generator",
+  "version": "1.0.0",
+  "description": "Working with ES6 &amp; Node.js: Professional README Generator",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjhandson/230224_professional_README_Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tjhandson/230224_professional_README_Generator/issues"
+  },
+  "homepage": "https://github.com/tjhandson/230224_professional_README_Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.5"
+  }
+}
