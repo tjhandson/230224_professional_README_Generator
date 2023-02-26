@@ -10,7 +10,7 @@ const fs = require('fs');
 const year = new Date().getFullYear();
 
 // log to note the use <br/> to avoid moving onto the next entry rather than a new line in the README file
-console.log("To break entries into seprate lines please use the <br/> note at the end of the sentence to line break.");
+console.info("To break entries into seprate lines please use the <br/> note at the end of the sentence to line break.");
 
 // object containing LICENCE Badge URLS
 const badges = {
