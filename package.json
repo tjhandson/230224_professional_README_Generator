@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/tjhandson/230224_professional_README_Generator#readme",
   "dependencies": {
+    "email-validator": "^2.0.4",
     "inquirer": "^8.2.5"
   }
 }
