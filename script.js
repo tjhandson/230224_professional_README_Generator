@@ -1,18 +1,25 @@
 // Task.1 Create a command-line application that accepts user input.
+// npm for user input
 const inquirer = require('inquirer');
+// npm for validating email input
 const emailValidator = require("email-validator");
+
 const fs = require('fs');
+
+// setting date for LICENCE file
 const year = new Date().getFullYear();
 
-console.log("To break entries into seprate lines please use the <br/> note at the end of the sentence.");
+// log to note the use <br/> to avoid moving onto the next entry rather than a new line in the README file
+console.log("To break entries into seprate lines please use the <br/> note at the end of the sentence to line break.");
 
+// object containing LICENCE Badge URLS
 const badges = {
     MIT: `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`,
     GPLv2: `[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)`,
     Apache: `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`,
     GPLv3: `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`
 }
-
+// object containing LICENCE Names
 const licenceNames = {
     MIT: "MIT License",
     GPLv2: "GNU General Public License v2.0",
@@ -20,7 +27,7 @@ const licenceNames = {
     GPLv3: "GNU General Public License v3.0",
 }
 
-
+// text for LICENCE file for MIT text from https://choosealicense.com
 const genMITLicence = (answers) => `
 MIT License
 
@@ -32,6 +39,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
 
+// text for LICENCE file for GNU GENERAL PUBLIC LICENSE V2 text from https://choosealicense.com
 const genGPLv2Licence = (answers) => `
 GNU GENERAL PUBLIC LICENSE
 Version 2, June 1991
@@ -373,7 +381,7 @@ consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.
 `
-
+// text for LICENCE file for Apache text from https://choosealicense.com
 const genApacheLicence = (answers) => `
 Apache License
 Version 2.0, January 2004
@@ -577,7 +585,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 `
-
+// text for LICENCE file for GNU GENERAL PUBLIC LICENSE V3 
 const genGPLv3Licence = (answers) => `
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
@@ -1254,12 +1262,8 @@ the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
 `
-
-// Task.2 When a user is prompted for information about the application repository, a high-quality, professional README.md is generated with
-// Task.3 When a user enters the project title, it's displayed as the title of the README.
-const genREADME = (answers) => `
-
-# ${answers.projectName} #
+// text for READNE file with Answers from UserInput
+const genREADME = (answers) => `# ${answers.projectName} #
 
 ## Description ##
 ${answers.description}
@@ -1301,11 +1305,10 @@ ${answers.testInstructions}
 ## Questions ##
 if you wish to ask any questions on this project please reach out to ${answers.GitHubUsername} via email on ${answers.emailAddress}
 `
-
+// When a user enters the project Information, it's displayed as the title of the README.
 inquirer
     .prompt([
         {
-            // When a user enters the project title, it's displayed as the title of the README.
             type: 'input',
             name: 'projectName',
             message: 'What is the name of your Project?',
@@ -1317,14 +1320,13 @@ inquirer
             },
         },
         {
-            // When a user enters a description, installation instructions, usage information, contribution guidelines, and test instructions, this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests.
             type: 'input',
             name: 'description',
             message: 'What is the description of your project?',
+            // validating if answer is not enpty
             validate: (answer) => {
                 if (answer) {
                     return true;
-
                 }
                 return "You Sure you don't want to add a description?";
             },
@@ -1333,10 +1335,10 @@ inquirer
             type: 'input',
             name: 'installationInstructions',
             message: 'installation instructions',
+            // validating if answer is not enpty
             validate: (answer) => {
                 if (answer) {
                     return true;
-
                 }
                 return "You Sure you don't want to add a installation instructions?";
             },
@@ -1345,10 +1347,10 @@ inquirer
             type: 'input',
             name: 'usageInformation',
             message: 'usage information',
+            // validating if answer is not enpty
             validate: (answer) => {
                 if (answer) {
                     return true;
-
                 }
                 return "You Sure you don't want to add a usage information?";
             },
@@ -1357,10 +1359,10 @@ inquirer
             type: 'input',
             name: 'contributionGuidelines',
             message: 'contribution guidelines',
+            // validating if answer is not enpty
             validate: (answer) => {
                 if (answer) {
                     return true;
-
                 }
                 return "You Sure you don't want to add a contribution guidelines?";
             },
@@ -1369,10 +1371,10 @@ inquirer
             type: 'input',
             name: 'testInstructions',
             message: 'test instructions',
+            // validating if answer is not enpty
             validate: (answer) => {
                 if (answer) {
                     return true;
-
                 }
                 return "You Sure you don't want to add a test instructions?";
             },
@@ -1381,10 +1383,10 @@ inquirer
             type: 'input',
             name: 'GitHubUsername',
             message: 'GitHub username',
+            // validating if answer is not enpty
             validate: (answer) => {
                 if (answer) {
                     return true;
-
                 }
                 return "You Sure this is your Github Username?";
             },
@@ -1393,6 +1395,7 @@ inquirer
             type: 'input',
             name: 'emailAddress',
             message: 'email address',
+            // validating if answer is a correct email address
             validate: (answer) => {
                 if (emailValidator.validate(answer)) {
                     return true;
@@ -1401,8 +1404,6 @@ inquirer
             },
         },
         {
-            // When a user chooses a license for their application from a list of options, a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under.
-
             type: 'list',
             message: 'What LICENCE would you like for your Project?',
             name: 'licence',
@@ -1410,6 +1411,7 @@ inquirer
         },
     ])
     .then((response) => {
+        // empty variables for responses
         let licenceTemplate = "";
         badge = badges[response.licence];
         licenceName = licenceNames[response.licence];
